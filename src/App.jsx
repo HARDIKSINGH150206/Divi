@@ -19,6 +19,7 @@ import d100Image from './images/D100.jpeg';
 import d8Image from './images/D8.jpg';
 import d1Image from './images/D1.jpg';
 import d15Image from './images/D15.jpg';
+import d18Image from './images/D18.jpeg';
 
 function DiaryApp() {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -194,39 +195,39 @@ function DiaryApp() {
 
   const sunriseUniversePages = useMemo(() => [
     {
-      title: "Dawn of New Beginnings",
-      date: "September 5, 2025",
-      message: "As the first light breaks through the horizon, everything feels possible. This universe is painted in golden hues, where every sunrise is a promise of hope and renewal.",
+      title: "OUR FIRST DATE ",
+      date: "September 12, 2025",
+      message: "The unforgetable day in my life ... humari first date ... cheeze sahi ho rahi thi ... mai bahit excited tha uss din tujhse milne ke liye , date pe chalne ke liye .... tu uss din bahot sundar lag rahi thi divyanshiii bahot jyada sundar ... uss din tere sath bitaya hua sara time bahot pure ... bahot aacha tha ... finally tune apni pasand ki dress khareed li uss di .... jab tu uss din trial room se bahar aayi thi i was speechless bahot sundar lag rahi thi .... humari first date ki photo toh nahi hai lekin ... memories itni hai ki kabhi khatam nahi hongi .... i wish in future hum sath rahe ... cheeze sahi jaae.... mera side se fuckups nahi honge abb se ... aur hum aaisi bahot ssari date pe jae ... jo photo maine lagayi hai voh dress tere pe kyaaa mast lag rahi hai ... tere liye he bani hai voh dresss ... next time jaha dikhe mai khareed lungaaaaa pakkaaaaaaaaa.... thankyou divyansi date ke liyeeeeeeee.... mai uss din ko aache se yaad rakhungaaaaa ... kabhi bhul nahi pahunga .... har ek moment cherish karunga ... thankyuuuuu diviiiiii ",
       imageUrl: d6Image
     },
     {
-      title: "Golden Hour Reflections",
-      date: "October 12, 2025",
-      message: "In the warm embrace of the sunrise, I find clarity. The amber light reminds me that after every darkness, there's always a new day waiting to unfold.",
+      title: "Chanakya ek prem katha",
+      date: "September 13, 2025",
+      message: "finally humne sath mei 2 din bitayeeee.... mere side se waha pe kuch unforgivable mistakes hui ... i apologize for voh harkat ... lekin tere sath itna time spend karna was dream ... mai chahta tha ki voh hackathon kabhhi khatam naa hoo ... hum humesha sath mei rahe .... voh sunrise wala talk was the mostt purest talk i ever had ... maine apni feelings express ki thi ... voh moment bahot pure laga tha .... sorry yrr tujhe thand mei baithane ke liye ... but thankyou hackathon mei aane ke liye aur hume apni presentation se qualify karane ke liye ... i realised that how much i love you and i cant afford to loose u .... thankyou divyanshi ... ",
       imageUrl: d8Image
     },
     {
-      title: "Horizons of Hope",
-      date: "November 8, 2025",
-      message: "Where the sun meets the earth, dreams take flight. This universe teaches me that endings are just horizons waiting to become new beginnings.",
+      title: "Horizon of Hope",
+      date: "End September, 2025",
+      message: "Humare milne ke random plans .... aur tere sath hona sabse crazyyy cheez thi ... jab bhi milne aata tah wapas jaane ka mann kabhi nahi karta tha ... lekin itna sab kuch tere bina bilkul bhi nahi hopata divyanshi .... tu humesha ready rahti hai milne ke liye ... tune kabhi roka nahi milne se jabki tujhe late jaane se daant bhi padti thi .... thankyou divyanshiii itna sab kkarne ke liye aur random plans jitne bhi  tere sath bane .... voh saari bus ride s ... tera raat mei call pe cute cute baaten karna was the best phase of our situationship ... tera dilll bahot bada hai divyanshiii ... aur tu bahot h mei bahot jyada aachi hai ... sach mei ... hum dono apni baaten share karte the and i felt very good tujhse sab share karke ... thankyou divyanshi for always being with me ...",
       imageUrl: d1Image
     },
     {
-      title: "Radiant Moments",
-      date: "December 1, 2025",
-      message: "The sunrise universe glows with warmth and possibility. Every ray of light is a reminder that we are made to shine, to grow, and to illuminate each other's paths.",
+      title: "Dandiyaaaaaaaaaa",
+      date: "october, 2025",
+      message: "teriiiii sabseeeee sundarrr photoooooooo ... mujhe yeh photo sach mei bahot pasand hai divyandhi ... issiliye daali .... thankyou uss din ke video call ke liye ... mujhe bahot aacha laga tha uss calll se .... thank you divyanshiiii ",
       imageUrl: d15Image
     },
     {
-      title: "Awakening Hearts",
-      date: "December 20, 2025",
-      message: "Like the sun rising each morning without fail, love awakens my heart daily. In this universe, every dawn is a testament to the beauty of new chances and endless love.",
-      imageUrl: "https://images.unsplash.com/photo-1504333638930-c8787321eee0?w=800&h=600&fit=crop"
+      title: "cutest Photo",
+      date: "October, 2025",
+      message: "Mujhse se raha nahi gaya aur maine yeh photo bhi add kardi ... taaki tujhe bhi pata chale ki tu neendh mei kitni pyari lagti hai .. mann karta hai ki dekhta he jau ... i miss that nacheee mei bhand divyanshiiiii",
+      imageUrl: d18Image
     },
     {
-      title: "Eternal Sunrise",
-      date: "December 29, 2025",
-      message: "In this universe of perpetual dawn, I've learned that together, we create our own light. Our love is the sunrise that never fades, illuminating all our universes.",
+      title: "The Best Pic",
+      date: "November 14, 2025",
+      message: " 2025 ki best photo divyanshiiiiii ... meri teri sath mei ek aachi si bahot aachi si photo .... photo dekh ke bahot badi si smile aa jati hai mere muhh pe ... tere liye novemver bilkul bhi shi nahi tha ... aur maine usko aue kharab kar diya .... im sorry divyanshi ... tere jiss time mei time mei mujhe tere sath rahna tha mai uss time tujhe sata raha tha ... sorry divyanshi ...lekin november se maine bahot kuch seekha hai divyanshi ... abb mujhe pata hai ki tujhe kya kya nahi pasand hai ... aur mera next year se yahi motto hai to become a man with whome you can spend your entire life .... mai apni ssaari galtiyon ke liye maafi maangta hoon divyanshi ... lekin next year se i can promise one thing ki mere side se no fuckups .. jaisa sab aacha tha wasa he rahega ... mai sab sahi kar dungaaaa ... and i know ki thoda sa toh trustvtu karti hai mujhpe .... aur mai usko kharab nahi karunga ... usko aur build karungaaa.... at last i want to thankyou mere hopeless life mei aake usko bahot aacha banane ka .... thank you divyanshiiiii...tu ek magic hai ....thankyou to make 2025 the best year  for me ",
       imageUrl: d100Image
     }
   ], []);

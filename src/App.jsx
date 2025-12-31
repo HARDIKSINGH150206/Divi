@@ -2,6 +2,12 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import centerIcon from './images/diviconstillation.png';
 import musicFile from './Audio/Afusic - Heer (Official Music Video) Prod. @AliSoomroMusic.mp3';
+import d9Image from './images/D9.jpg';
+import diviImage from './images/DIVI.jpeg';
+import d20Image from './images/D20.jpeg';
+import d25Image from './images/D25.jpeg';
+import d29Image from './images/D29.jpeg';
+import d26Image from './images/D26.jpeg';
 
 function DiaryApp() {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -21,15 +27,38 @@ function DiaryApp() {
     audio.volume = 0.3;
     return audio;
   });
+  const [typewriterText, setTypewriterText] = useState('');
 
   useEffect(() => {
     // Calculate days together from a start date
-    const startDate = new Date('2024-01-01'); // Change this to your actual start date
+    const startDate = new Date('2025-06-26'); // Starting from June 26, 2025
     const today = new Date();
     const diffTime = Math.abs(today - startDate);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     setDaysTogether(diffDays);
   }, []);
+
+  // Typewriter effect for final page
+  useEffect(() => {
+    if (!showFinalPage) {
+      setTypewriterText('');
+      return;
+    }
+
+    const fullText = 'WELCOME TO 2026 DIVYANSHI';
+    let currentIndex = 0;
+    
+    const typewriterInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setTypewriterText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typewriterInterval);
+      }
+    }, 100); // Adjust speed here (100ms per character)
+
+    return () => clearInterval(typewriterInterval);
+  }, [showFinalPage]);
 
   useEffect(() => {
     const createShootingStar = () => {
@@ -76,40 +105,40 @@ function DiaryApp() {
 
   const diaryPages = useMemo(() => [
     {
-      title: "New Year's Eve Magic",
-      date: "December 31, 2024",
-      message: "Tonight marks the end of an incredible year filled with growth, challenges, and countless memories. As the clock ticks towards midnight, I reflect on all the moments that shaped me and the dreams that lie ahead.",
-      imageUrl: "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=800&h=600&fit=crop"
+      title: "when we first saw each other",
+      date: "May 24, 2025",
+      message: "Thanks to Srishti2025 , Hackathon ke baad se ek dusre ki exsistance ke baree mei patta chala , its the best thing happend to me in 2025 , it was destiny ya fir mera luck ki mai waha par tha... humari baat hui nahi uss din lekin sometimes silence also speaks ... thankyou divyanshi meri life mei entry maarne ke liye....",
+      imageUrl: d9Image
     },
     {
       title: "Fresh Beginnings",
-      date: "January 1, 2025",
-      message: "The first sunrise of 2025 is breathtaking. New goals, new dreams, and endless possibilities lie ahead. This year, I promise to be kinder to myself and chase my passions fearlessly.",
-      imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+      date: "June 26(shyd), 2025",
+      message: "Tera first message ... we were strangers but i never felt like that ... humari day one se he vibe match ho gayi ... kabhi laga nahi ki hum strangers hai ... tabse le kar abhi tak humesha tujhse baat kar ke bahot aacha lagta hai...like tujhse baat karna is the best part of the day ... thankyou divyanshi for always being there... ",
+      imageUrl: diviImage
     },
     {
-      title: "Winter Adventures",
+      title: "Late Night Magic",
       date: "January 15, 2025",
-      message: "The snow-covered mountains called my name today. There's something magical about winter adventures that makes you feel alive and present in the moment.",
-      imageUrl: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop"
+      message: "  I still remember this day divyanshi ... raat ka yeh video call , to hostel vacate karne wali thi aur packing kar rahi thi ... sab kuch bahot aacha aur naya naya lag raha tha ... by that time mujhe tujhpe crush aa  gaya tha ... uss din tune mujhe apni favorite golden bangles aur certificates dikhae the ... aaesa lag raha hai ki kuch din pahle he baat hui thi .... during this period of time i started manefesting you ... but i was confused about my feeling ... lekin i enjoyed this period of time divyanshi ... tere voh calls ... tere voh voice note ... tujhe call kar ke uthana .... this all feels like a dream .... thankyou divyanshi for giving me these days in my lifeeee ",
+      imageUrl: d20Image
     },
     {
-      title: "Cozy Evening Thoughts",
+      title: "Here we go...!!!",
       date: "January 28, 2025",
-      message: "Sometimes the best moments are the quiet ones - a warm cup of tea, a good book, and the gentle patter of rain against the window. These simple pleasures bring the most peace.",
-      imageUrl: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&h=600&fit=crop"
+      message: "KYa din thaaa yrrr divyanshiii .... hum pahli baar sath mei kahi bahar gaye thre .... like pahli baar humne itna time spend kiyaa sath mei and felt every moment as a dream come true ... tere sath arcade mei bitaya hua time ... tere sath jeeta hua voh cutu rabbit aur tere sath voh baaten ... sab kuch bahot sundar aur bahot pyara tha divyanshi .... itne jaldi mai kabhi kisike sath open nahi hua ... thankyou divyanshi mujhe na judge marne ke liye ... thankyou for always being my safe space. initially i was thody shy lekin tune samhal liya tha mujhe divyanshi thankyouuuu very much for all this memories divyanshi ...thankyou ",
+      imageUrl: d25Image
     },
     {
-      title: "Dreams Taking Shape",
+      title: "MERI BEST TROPHY",
       date: "February 10, 2025",
-      message: "Today I took a leap of faith towards my dreams. It's scary and exhilarating all at once, but I know that growth happens outside the comfort zone.",
-      imageUrl: "https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&h=600&fit=crop"
+      message: "Yeh cute sa rabbit meri liye sabse badi sabse aachi trophy hai ...tune uss din tune poocha tha ki 'kya tujhe chahiye yeh' mera bahot mann tha usko apne pass rakhne ka usko bhagwaan ki murtii ki tarah pooja karta usko humesha apne paas rakta kabhi kuch hone nahi dena .... lekin voh tune jeeta tha you deserved it ... aur uss din ki nishani ke liye maine voh bottle le li .... voh bottle life time mere sath rahegi ... mujhe bahot pasand hai voh bottle ... its like im emotinally connected to it ... thankyou divyanshi for giving me days like this .... mai aapna naam bhul jaunga lekin tere sath bitaye hue yeh moments nahi bhula paunga ... thankyou divyanshi for making my life worth living",
+      imageUrl: d29Image
     },
     {
-      title: "Gratitude Journal",
+      title: "Meri Favorite kuromi",
       date: "February 28, 2025",
-      message: "As I look back on these weeks, my heart is full of gratitude. For the people who support me, the opportunities that arise, and the strength I've discovered within myself.",
-      imageUrl: "https://images.unsplash.com/photo-1476362555312-ab9e108a0b7e?w=800&h=600&fit=crop"
+      message: "i knew kuromi but kewal naam aur shaql .... tu kuromi jaisi gusse wali toh nahi hai ... lekin tu khud mei he ek disney princess hai .. sabse sundar ,sabse cuteeee,sapse aachi ... pata hai jab tu focus mei hoti hai toh baaki ssaari cheeze out of focus ho jaati hai .... i always rant about my luck ... lekin bhagwan ne meri sunn li aur tujse millwa diya .... billions of people and s all odds ... jabse tu mere life mei aayi hai sab kuch aacha ho raha hai ... mai khush hone laga , i short i got lucky... thankyou mujhe lucky banane ke liye ... if u are by my side i am the luckyest  person alive ..... thankyou ... i want to say thankyoub meri lucky charm ...lekin i lost that leverage to say u meri ... lekin maine cheexe bigadi hai ... aur mai he theek karunga .... lekin thanyou for giving me oppurtunity jo mai bina tere crack nahi kar pata ... thankyou ",
+      imageUrl: d26Image
     }
   ], []);
 
@@ -362,10 +391,19 @@ function DiaryApp() {
                   fontWeight: 100,
                   letterSpacing: '20px',
                   fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-                  lineHeight: 1.2
+                  lineHeight: 1.2,
+                  minHeight: '80px' // Prevent layout shift
                 }}
               >
-                WELCOME TO 2026 DIVYANSHI
+                {typewriterText}
+                <span 
+                  className="animate-pulse" 
+                  style={{ 
+                    opacity: typewriterText.length < 'WELCOME TO 2026 DIVYANSHI'.length ? 1 : 0 
+                  }}
+                >
+                  |
+                </span>
               </h1>
 
               {/* The Message */}
@@ -1024,14 +1062,16 @@ function DiaryApp() {
                         </h3>
 
                         {/* Image */}
-                        <div className="rounded-xl overflow-hidden shadow-xl border mb-3" style={{
-                          borderColor: currentUniverse === 2 ? 'rgba(228, 52, 20, 0.3)' : 'rgba(255, 255, 255, 0.1)'
+                        <div className="rounded-xl overflow-hidden shadow-xl border mb-3 flex items-center justify-center bg-black" style={{
+                          borderColor: currentUniverse === 2 ? 'rgba(228, 52, 20, 0.3)' : 'rgba(255, 255, 255, 0.1)',
+                          minHeight: '300px',
+                          maxHeight: '500px'
                         }}>
                           <img 
                             src={page.imageUrl} 
                             alt={page.title}
                             loading="lazy"
-                            className="w-full h-32 sm:h-40 md:h-48 object-cover"
+                            className="max-w-full max-h-full w-auto h-auto object-contain"
                           />
                         </div>
 

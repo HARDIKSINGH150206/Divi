@@ -1,0 +1,412 @@
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import centerIcon from './images/diviconstillation.png';
+
+function DiaryApp() {
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [daysTogether, setDaysTogether] = useState(0);
+
+  const [shootingStars, setShootingStars] = useState([]);
+  const [dinoPosition, setDinoPosition] = useState(0);
+  const [inOtherUniverse, setInOtherUniverse] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    // Calculate days together from a start date
+    const startDate = new Date('2024-01-01'); // Change this to your actual start date
+    const today = new Date();
+    const diffTime = Math.abs(today - startDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    setDaysTogether(diffDays);
+  }, []);
+
+  useEffect(() => {
+    const createShootingStar = () => {
+      const newStar = {
+        id: Date.now() + Math.random(),
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 50}%`,
+        duration: Math.random() * 2 + 2
+      };
+      
+      setShootingStars(prev => [...prev, newStar]);
+      
+      setTimeout(() => {
+        setShootingStars(prev => prev.filter(star => star.id !== newStar.id));
+      }, newStar.duration * 1000);
+    };
+
+    // Create 2-3 initial shooting stars
+    createShootingStar();
+    setTimeout(() => createShootingStar(), 500);
+    setTimeout(() => createShootingStar(), 1200);
+
+    // Create shooting stars at random intervals (more frequent)
+    const interval = setInterval(() => {
+      createShootingStar();
+    }, Math.random() * 2000 + 1500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const diaryPages = [
+    {
+      title: "New Year's Eve Magic",
+      date: "December 31, 2024",
+      message: "Tonight marks the end of an incredible year filled with growth, challenges, and countless memories. As the clock ticks towards midnight, I reflect on all the moments that shaped me and the dreams that lie ahead.",
+      imageUrl: "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=800&h=600&fit=crop"
+    },
+    {
+      title: "Fresh Beginnings",
+      date: "January 1, 2025",
+      message: "The first sunrise of 2025 is breathtaking. New goals, new dreams, and endless possibilities lie ahead. This year, I promise to be kinder to myself and chase my passions fearlessly.",
+      imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+    },
+    {
+      title: "Winter Adventures",
+      date: "January 15, 2025",
+      message: "The snow-covered mountains called my name today. There's something magical about winter adventures that makes you feel alive and present in the moment.",
+      imageUrl: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop"
+    },
+    {
+      title: "Cozy Evening Thoughts",
+      date: "January 28, 2025",
+      message: "Sometimes the best moments are the quiet ones - a warm cup of tea, a good book, and the gentle patter of rain against the window. These simple pleasures bring the most peace.",
+      imageUrl: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&h=600&fit=crop"
+    },
+    {
+      title: "Dreams Taking Shape",
+      date: "February 10, 2025",
+      message: "Today I took a leap of faith towards my dreams. It's scary and exhilarating all at once, but I know that growth happens outside the comfort zone.",
+      imageUrl: "https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&h=600&fit=crop"
+    },
+    {
+      title: "Gratitude Journal",
+      date: "February 28, 2025",
+      message: "As I look back on these weeks, my heart is full of gratitude. For the people who support me, the opportunities that arise, and the strength I've discovered within myself.",
+      imageUrl: "https://images.unsplash.com/photo-1476362555312-ab9e108a0b7e?w=800&h=600&fit=crop"
+    }
+  ];
+
+  const handleUnlock = () => {
+    if (password === 'Manya') {
+      setIsUnlocked(true);
+      setError('');
+    } else {
+      setError('Wrong password! Try again.');
+      setPassword('');
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < diaryPages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleUnlock();
+    }
+  };
+
+  // Generate random stars
+  const generateStars = () => {
+    return [...Array(100)].map((_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      size: Math.random() * 3 + 1,
+      duration: Math.random() * 3 + 2
+    }));
+  };
+
+  const stars = generateStars();
+
+  return (
+    <div className="fixed inset-0 h-screen w-screen overflow-hidden" style={{ background: 'linear-gradient(180deg, #050a15 0%, #12102d 50%, #1a0f30 100%)' }}>
+      {/* Starfield */}
+      <div className="absolute inset-0 overflow-hidden">
+        {stars.map((star) => (
+          <div
+            key={star.id}
+            className="star"
+            style={{
+              left: star.left,
+              top: star.top,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              animationDuration: `${star.duration}s`
+            }}
+          />
+        ))}
+        {/* Shooting Stars */}
+        {shootingStars.map((star) => (
+          <div
+            key={star.id}
+            className="shooting-star"
+            style={{
+              left: star.left,
+              top: star.top,
+              animationDuration: `${star.duration}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <AnimatePresence mode="wait">
+        {!isUnlocked ? (
+          <motion.div
+            key="cover"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 h-full w-full flex flex-col"
+          >
+            {/* Decorative Moon */}
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 0.8, y: 0 }}
+              transition={{ duration: 2, delay: 0.5 }}
+              className="absolute top-10 right-10 sm:top-16 sm:right-16 md:top-20 md:right-24"
+            >
+              <svg className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56" viewBox="0 0 200 200" fill="none">
+                <defs>
+                  <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="rgba(255, 255, 255, 0.4)" />
+                    <stop offset="50%" stopColor="rgba(255, 255, 255, 0.2)" />
+                    <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+                  </radialGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                {/* Outer glow */}
+                <circle cx="100" cy="100" r="95" fill="url(#moonGlow)" />
+                {/* Moon circle with glow filter */}
+                <circle cx="100" cy="100" r="80" fill="white" opacity="1" filter="url(#glow)" />
+                {/* Craters */}
+                <circle cx="70" cy="80" r="15" fill="rgba(200, 200, 220, 0.5)" />
+                <circle cx="120" cy="90" r="10" fill="rgba(200, 200, 220, 0.5)" />
+                <circle cx="90" cy="120" r="20" fill="rgba(200, 200, 220, 0.5)" />
+                <circle cx="130" cy="110" r="8" fill="rgba(200, 200, 220, 0.5)" />
+                <circle cx="80" cy="110" r="12" fill="rgba(200, 200, 220, 0.5)" />
+              </svg>
+            </motion.div>
+
+            {/* Header */}
+            <header className="relative z-10 flex justify-between items-center p-4 sm:p-6 md:p-8">
+              <div className="font-playfair text-white text-sm sm:text-base md:text-lg">
+                Together for: <span className="font-bold text-purple-300">{daysTogether}</span> days
+              </div>
+              <button className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                </svg>
+                <span className="text-sm sm:text-base font-playfair">Play our Song</span>
+              </button>
+            </header>
+
+            {/* Main Content */}
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-5 md:space-y-6 -mt-12 sm:-mt-16 md:-mt-20">
+              {/* Center Icon */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="relative"
+              >
+                <img 
+                  src={centerIcon} 
+                  alt="Universe Icon" 
+                  className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain constellation-flicker"
+                />
+              </motion.div>
+
+              {/* Title */}
+              <motion.h1
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="font-playfair text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center tracking-wider"
+                style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}
+              >
+                A Universe Named Divyanshi
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="font-playfair text-purple-200 text-base sm:text-lg md:text-xl text-center italic"
+              >
+                A universe crafted just for you
+              </motion.p>
+
+              {/* Password Section */}
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                className="w-full max-w-md space-y-4 sm:space-y-5"
+              >
+                <div className="relative">
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleUnlock()}
+                    placeholder="Hint: Person who rules her universe"
+                    className="w-full px-6 py-3 sm:py-4 text-center text-base sm:text-lg font-playfair bg-white/10 backdrop-blur-md border-2 border-white/30 rounded-full text-white placeholder-white/50 focus:outline-none focus:border-purple-300 focus:bg-white/15 transition-all"
+                  />
+                </div>
+
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-red-300 text-center font-playfair text-sm"
+                  >
+                    {error}
+                  </motion.p>
+                )}
+
+                {/* Golden Wax Seal Button */}
+                <button
+                  onClick={handleUnlock}
+                  className="relative group w-full py-4 sm:py-5 font-playfair text-lg sm:text-xl md:text-2xl font-bold text-white transition-all overflow-hidden rounded-full"
+                  style={{
+                    background: 'linear-gradient(135deg, #d4af37 0%, #f2d06b 50%, #d4af37 100%)',
+                    boxShadow: '0 8px 30px rgba(212, 175, 55, 0.5), inset 0 2px 10px rgba(255, 255, 255, 0.3)'
+                  }}
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2" style={{ color: '#1a1a1a' }}>
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clipRule="evenodd" />
+                    </svg>
+                    OPEN YOUR UNIVERSE
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                </button>
+              </motion.div>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="diary"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 h-full w-full flex flex-col"
+          >
+            {/* Header */}
+            <header className="relative z-10 flex justify-end items-center p-4 sm:p-6 md:p-8">
+              <button 
+                onClick={() => setIsUnlocked(false)}
+                className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span className="text-sm sm:text-base font-playfair">Close</span>
+              </button>
+            </header>
+
+            {/* Diary Timeline Content */}
+            <div className="relative z-10 flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
+              {/* Timeline Container */}
+              <div className="relative z-10 max-w-5xl mx-auto py-8">
+                {/* Vertical Timeline Line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-400 via-purple-300 to-purple-400 opacity-30"></div>
+                
+                {/* Timeline Entries */}
+                {diaryPages.map((page, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    className={`relative flex items-center mb-12 sm:mb-16 md:mb-20 ${
+                      index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                    }`}
+                  >
+                    {/* Content Card */}
+                    <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'pr-8 sm:pr-12' : 'pl-8 sm:pl-12'}`}>
+                      <div 
+                        className="p-4 sm:p-6 rounded-2xl backdrop-blur-md border border-white/20"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(20, 20, 50, 0.6) 100%)',
+                          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)'
+                        }}
+                      >
+                        {/* Date */}
+                        <p className="font-playfair text-purple-300 text-xs sm:text-sm italic mb-2">
+                          {page.date}
+                        </p>
+
+                        {/* Title */}
+                        <h3 className="font-playfair font-bold text-lg sm:text-xl md:text-2xl text-white mb-3">
+                          {page.title}
+                        </h3>
+
+                        {/* Image */}
+                        <div className="rounded-xl overflow-hidden shadow-xl border border-white/10 mb-3">
+                          <img 
+                            src={page.imageUrl} 
+                            alt={page.title}
+                            className="w-full h-32 sm:h-40 md:h-48 object-cover"
+                          />
+                        </div>
+
+                        {/* Message */}
+                        <p className="font-playfair text-white/80 text-sm sm:text-base leading-relaxed">
+                          {page.message}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Timeline Node */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-purple-400 border-4 border-black shadow-lg" 
+                        style={{ boxShadow: '0 0 20px rgba(192, 132, 252, 0.6)' }}
+                      ></div>
+                    </div>
+
+                    {/* Empty space for alternating layout */}
+                    <div className="hidden sm:block w-5/12"></div>
+                  </motion.div>
+                ))}
+
+                {/* Journey End Marker */}
+                <div className="relative flex justify-center mt-8">
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 border-4 border-black shadow-xl" 
+                      style={{ boxShadow: '0 0 30px rgba(192, 132, 252, 0.8)' }}
+                    ></div>
+                    <p className="font-playfair text-purple-300 text-sm sm:text-base mt-4 italic">Our Journey Continues...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default DiaryApp;

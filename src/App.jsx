@@ -8,6 +8,12 @@ import d20Image from './images/D20.jpeg';
 import d25Image from './images/D25.jpeg';
 import d29Image from './images/D29.jpeg';
 import d26Image from './images/D26.jpeg';
+import d22Image from './images/D22.jpeg';
+import d21Image from './images/D21.jpeg';
+import d27Image from './images/D27.jpeg';
+import d24Image from './images/D24.jpeg';
+import d28Image from './images/D28.jpeg';
+import d14Image from './images/D14.jpg';
 
 function DiaryApp() {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -144,40 +150,40 @@ function DiaryApp() {
 
   const otherUniversePages = useMemo(() => [
     {
-      title: "Parallel Universe Discovery",
-      date: "March 15, 2025",
-      message: "In this alternate dimension, I found that every choice creates infinite possibilities. The version of me here dances with stardust and dreams in cosmic colors.",
-      imageUrl: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&h=600&fit=crop"
+      title: "Second Meracle",
+      date: "August 6, 2025",
+      message: "Divyanshi pata hai i see church street as my safeplace... like when ever i'm stuck toh waha nikal jata hoon ... pata nahi kyu bahot aacha lagta hai ... shayad autism final stage ... lekin tere sath waha jana bahot valuable tha mere liye... uss din tera din bahot ganda start hua tha lekin i tried ki tujhe ek paal bhi bura na lage .... kazan was abad choice lekin humari ek bahot aachi aur initials memories waha se milli .... i enjoyed that day baht maza aaya tha divyanshi uss din .... jaate waqt tera sabse cute phase dekhne ko milla tha mujhe bahot pyaari .... jab tu auto mei mere shoulder pe soo gayi thi at that time mai nahi chahata tha ki voh auto ride khatam ho jae ... jab teri neendh poori ho jae fir auto ride bhi khatam ho jae ... tujhe neendh se uthane ke liye mera mann nahi maan raha tha ... lekin uthana pada .... i really enjoyed that dayyy ... lekin sorry bahot jyada late karwane ke liye  ... sorrry aunty se daant khilwane ke liye.",
+      imageUrl: d21Image
     },
     {
-      title: "Cosmic Connections",
-      date: "April 2, 2025",
-      message: "Here in the other universe, connections transcend space and time. Every soul I meet feels like a constellation, lighting up my path through the darkness.",
-      imageUrl: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&h=600&fit=crop"
+      title: "Down the Memory lane ",
+      date: "August 6, 2025",
+      message: "Kazan ki yeh photo .. gandi camera quality ... faltu khana ... lekin tere sath waha baith ke hasna was all what i remember ... bahot sundar lag rahi thi uss din .... humne twining ki thi uss din randomly ... thankyou uss din aane ke liye although tere liye cheeze sahi nahi chal rahi thi .... thankyou Divi .",
+      imageUrl: d27Image
     },
     {
-      title: "Stardust Memories",
-      date: "May 10, 2025",
-      message: "They say we're all made of stardust. In this universe, I can feel it - every atom vibrating with the memory of distant galaxies and ancient supernovas.",
-      imageUrl: "https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?w=800&h=600&fit=crop"
+      title: "Dooriyan Aur Badh gayi !!!",
+      date: "August 20, 2025",
+      message: "Hum Already door the fir kuch dino ke liye aur dur ho gaye... lekin door ho kar bhi pass the .. thanks to google meet ... voh nahi hota toh aapna kuch nahi ho pata ... tere se rroz baat karna mere liye ek bahot aachi habbit lagti thi ... mai aapna saara kaam sameet ke jaldi jadli tujse baat karne aa jata tha ... voh excitement tujhse baat karne ke ... i cant define it ... nobody can ... lekin ess din merese bahot badi galti ho gayi ... maine teri ek bahot serious baat kaat di ... mujhe bilkul nahi karna tha ... lekin pata nahi kaise hogaya ...im sorry divyanshi.",
+      imageUrl: d24Image
     },
     {
-      title: "Nebula Dreams",
-      date: "June 18, 2025",
-      message: "Dreams take form differently here. They swirl like nebulas, colorful and vast, each one a birthplace for new stars and possibilities.",
-      imageUrl: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=800&h=600&fit=crop"
+      title: "Cutieeee Patutieeee !!!",
+      date: "August 23, 2025",
+      message: "google meet aur movies ... tere sath movie dekhna , tera daant ke mera camera onn karwana ... whatsapp ope message karna ki timesup ... i loved every single part off it ... and what i liked the most was tera pune se wapas aana ... humne poore raste baat ki ... like maximum of the time ... muje uss din aacha laga ki tu mere sath ccomfortablee feel karti jai aur mujhe kabil samajhti hai cheeze share karne ke liye ... home coming of cutieee patutieee ..... meri peak excitement thi ... tabse i started liking you ... tere liye i build a heeling ... a very pure feeling ... thankyou divyanshiii bahot jyada mera haar din exciting aur aacha banane ke liye",
+      imageUrl: d28Image
     },
     {
-      title: "Quantum Leap of Faith",
-      date: "July 7, 2025",
-      message: "Taking leaps of faith in this universe means existing in multiple states at once - both brave and afraid, both here and everywhere, both present and infinite.",
-      imageUrl: "https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800&h=600&fit=crop"
+      title: "Hyderabad toh rahh gaya !!!",
+      date: "August 9, 2025",
+      message: "raakhi ka din ... meraa lat external exam ...aur tujhse baat karne ki bahot excitement ..... maan kar raha tha ki hyderabaad he aa jau milne .... bilkul mann nahi lag raha tha tujhse bina baat kiye ... kuch na kuch bahana dhund raha tha baat karne ka ... aur hum raat mei roz meet pe aate the ... i was living a life which i dremed off ... thankyou divyanshi for making me believe that magic exists ... AUR SORRYYYYY TIMELINE KHARAB KARNE KE LIYE .... SORRYYY.",
+      imageUrl: d22Image
     },
     {
       title: "Infinite Together",
-      date: "August 1, 2025",
-      message: "Across all universes, dimensions, and timelines - this one truth remains constant: our connection spans infinity. Forever intertwined in the cosmic dance.",
-      imageUrl: "https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=800&h=600&fit=crop"
+      date: "August 28, 2025",
+      message: "divyanshiiiiiiii hum finally mille .... bahot dino baad lekin mille ... command hospital ... tu bahot sundar lag rahi thi ... mai late tha uss din sorryyy mai bilkul bhi nahi chahata tha late hona ... lekin tere sath waha time spend karna ... tere sath chole bhature aur pav bhajii khana ... uss din terese dur jaane ka bilkul mann nahi kar raha tha .... mann kar raha tha ki humesha tere pass rahu .... tujhse bilkul bhi dur na jau .... uss din jab tera treatment chal raha tha tab mujhme bilkul himmat nahi thi tujhe aaese pain mei dekhne ka ... tujhe dard ho raha tha... tujhe bahot dard jhelna pada tha uss din .... issi reason se mai tujse request kar raha tha ki tu surgery baad mei karwaye ... voh din i felt very open around you mujhe koi darr nahi tha....tere around humesha safe feel karta hoon .... voh din mai first time CH gaya tha ... aur tere sath gatya tha that made it more special ... bahot jyada ....lekin end mei maine hagg diya ... lovebombing wala .... ek misunderstanding ho gayi thi cheeze kharab hone waali thi lekin tune bacha liya divyanchi .... tine meri baat samjhiii ... thankyou mujhe samajhne ke liyeeee....thankyou divyanshi ",
+      imageUrl: d14Image
     }
   ], []);
 

@@ -14,6 +14,11 @@ import d27Image from './images/D27.jpeg';
 import d24Image from './images/D24.jpeg';
 import d28Image from './images/D28.jpeg';
 import d14Image from './images/D14.jpg';
+import d6Image from './images/D6.jpg';
+import d100Image from './images/D100.jpeg';
+import d8Image from './images/D8.jpg';
+import d1Image from './images/D1.jpg';
+import d15Image from './images/D15.jpg';
 
 function DiaryApp() {
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -192,25 +197,25 @@ function DiaryApp() {
       title: "Dawn of New Beginnings",
       date: "September 5, 2025",
       message: "As the first light breaks through the horizon, everything feels possible. This universe is painted in golden hues, where every sunrise is a promise of hope and renewal.",
-      imageUrl: "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=800&h=600&fit=crop"
+      imageUrl: d6Image
     },
     {
       title: "Golden Hour Reflections",
       date: "October 12, 2025",
       message: "In the warm embrace of the sunrise, I find clarity. The amber light reminds me that after every darkness, there's always a new day waiting to unfold.",
-      imageUrl: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
+      imageUrl: d8Image
     },
     {
       title: "Horizons of Hope",
       date: "November 8, 2025",
       message: "Where the sun meets the earth, dreams take flight. This universe teaches me that endings are just horizons waiting to become new beginnings.",
-      imageUrl: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800&h=600&fit=crop"
+      imageUrl: d1Image
     },
     {
       title: "Radiant Moments",
       date: "December 1, 2025",
       message: "The sunrise universe glows with warmth and possibility. Every ray of light is a reminder that we are made to shine, to grow, and to illuminate each other's paths.",
-      imageUrl: "https://images.unsplash.com/photo-1500099817043-86d46000d58f?w=800&h=600&fit=crop"
+      imageUrl: d15Image
     },
     {
       title: "Awakening Hearts",
@@ -222,7 +227,7 @@ function DiaryApp() {
       title: "Eternal Sunrise",
       date: "December 29, 2025",
       message: "In this universe of perpetual dawn, I've learned that together, we create our own light. Our love is the sunrise that never fades, illuminating all our universes.",
-      imageUrl: "https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?w=800&h=600&fit=crop"
+      imageUrl: d100Image
     }
   ], []);
 
